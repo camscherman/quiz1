@@ -5,6 +5,9 @@ const path = require('path')
 const app = Express()
 
 app.use(morgan('dev'))
+app.use(bodyParser.urlencoded({extende:false}))
+
+const  clucks = require('./routes/clucks')
 
 app.set('view engine', "ejs")
 app.use(Express.static(path.join(__dirname, 'public')))
@@ -14,6 +17,7 @@ app.get('/', (req,res) =>{
 
 
 const PORT = 4545
+app.use('/clucks', clucks)
 
 app.listen(PORT, ()=>{
 
