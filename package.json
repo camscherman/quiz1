@@ -1,0 +1,11 @@
+{
+  "name": "cluckr",
+  "version": "0.0.0",
+  "description": "Basic twitter clone",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cam Scherman",
+  "license": "MIT"
+}
