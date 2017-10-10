@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+<div class="card">
+    <div class="card-header">
+        <div class= "row">
+        <h1>🐓</h1>
+        <a class='btn btn-secondary ml-auto'>Cluck!</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <form  action='/clucks/new' method= 'POST'>
+            <div class="form-group"  >
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name ="username"  placeholder="Your username here">
+                
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea  class="form-control" name= "content"  placeholder="Whatchoo cluckin' 'bout?"></textarea>
+            </div>
+            <div class ="form-group">
+                
+                <input class="form-control-file" name="photo" type="file" />
+                
+            </div>
+            <div class='d-flex flex-row-reverse'>
+            <button type="submit" class="btn btn-outline-secondary ml-auto">Cluck!</button>
+        </div>
+        </form>
+    </div>
+</div>
+<%- include('../partials/footer') %>

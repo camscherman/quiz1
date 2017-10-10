@@ -5,7 +5,7 @@ const path = require('path')
 const app = Express()
 
 app.use(morgan('dev'))
-app.use(bodyParser.urlencoded({extende:false}))
+app.use(bodyParser.urlencoded({extended:false}))
 
 const  clucks = require('./routes/clucks')
 
