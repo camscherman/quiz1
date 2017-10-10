@@ -2,6 +2,9 @@ const Express = require('express')
 const router = Express.Router()
 const path = require('path')
 const kx = require('../db/connection')
+const multer = require('multer')
+
+const upload = multer({dest: path.join(__dirname, '..', 'public', 'uploads')})
 
 
 router.get('/', (req, res) =>{
@@ -11,12 +14,16 @@ router.get('/new', (req, res) =>{
     res.render('./clucks/new')
 })
 
-router.post('/new', (req, res) => {
+router.get('/test', (req, res) =>{
+    kx.select().from('clucks').then( clucks => res.send(clucks))
+})
+router.post('/new', upload.single('photo'), (req, res) => {
     const {username,content} = req.body
-    kx.insert({username: username, content: content})
+    const {file_path} = req.file
+    kx.insert({username: username, content: content, image_path: file_path})
     .into('clucks')
     .then(()=>{
-        res.redirect('/')
+        res.redirect('/clucks/test')
     })
     
 })
