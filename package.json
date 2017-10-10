@@ -4,7 +4,10 @@
   "description": "Basic twitter clone",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon",
+    "debug": "nodemon --inspect",
+    "db:create": "createdb --echo cluckr",
+    "db:drop": "dropdb --echo --if-exists cluckr"
   },
   "author": "Cam Scherman",
   "license": "MIT",
