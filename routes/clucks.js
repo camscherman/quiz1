@@ -13,12 +13,13 @@ router.get('/new', (req, res) =>{
 })
 
 router.get('/', (req, res) =>{
-    kx.select().from('clucks').then( clucks => res.send(clucks))
+    kx.select().from('clucks').orderBy('created_at', 'DESC').then( clucks => res.render('./clucks/index', {clucks}))
 })
 router.post('/new', upload.single('photo'), (req, res) => {
     const {username,content} = req.body
     const {filename} = req.file
-    kx.insert({username: username, content: content, image_path: `/uploads/${filename}`})
+    const im_path = filename === null ? null : `/uploads/${filename}`
+    kx.insert({username: username, content: content, image_path: im_path})
     .into('clucks')
     .then(()=>{
         res.redirect('/clucks')

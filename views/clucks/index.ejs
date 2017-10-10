@@ -1,0 +1,25 @@
+<%- include('../partials/header') %>
+<% for(let cluck of clucks){ %>
+    <div class="card" >
+        <div class="card-body">
+            <div class="row">
+                <div class= "col-xs-2 col-sm-2 col-md-2"><img src='/images/rooster.jpg' class='img-fluid'></div>
+                <div class='col-xs-10 col-sm-10 col-md-10'>
+                    
+        <div class= "row">
+            <h6 class="card-title"> <%= cluck.username  %></h6>
+            <h6 class="card-title  text-muted">   ●   </h6>
+            <h6 class="card-title text-muted"> <%= cluck.created_at %> </h6>
+            </div>
+            <p class="card-text"><%= cluck.content %></p>
+            <% if(!!cluck.image_path) {%>
+                <img class='img-fluid' src="<%= cluck.image_path %>" >   
+            <%}%>
+            
+            
+            </div>
+            </div>
+        </div>
+    </div>
+    <% }%>
+<%- include('../partials/footer') %>
