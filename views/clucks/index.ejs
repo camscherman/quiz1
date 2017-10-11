@@ -1,4 +1,19 @@
 <%- include('../partials/header') %>
+<div class="row">
+    <div class= "hidden col-lg-3">
+        <div class= "card " id= "trending">
+            <ul>
+                <li>A</li>
+                <li>B</li>
+                <li>C</li>
+                <li>D</li>
+                <li>E</li>
+                <li>F</li>
+            </ul>
+
+        </div>
+    </div>
+<div class= "col-lg-9 col-sm-12 col-xs-12">
 <% for(let cluck of clucks){ %>
     <div class="card" >
         <div class="card-body">
@@ -9,7 +24,7 @@
         <div class= "row">
             <h6 class="card-title"> <%= cluck.username  %></h6>
             <h6 class="card-title  text-muted">   ●   </h6>
-            <h6 class="card-title text-muted"> <%= cluck.created_at %> </h6>
+            <h6 class="card-title text-muted"> <%= helpers.dateFormat(cluck.created_at) %> </h6>
             </div>
             <p class="card-text"><%= cluck.content %></p>
             <% if(!!cluck.image_path) {%>
@@ -22,4 +37,6 @@
         </div>
     </div>
     <% }%>
+    </div>
+    </div>
 <%- include('../partials/footer') %>

@@ -11,13 +11,14 @@ const  clucks = require('./routes/clucks')
 
 app.set('view engine', "ejs")
 app.use(Express.static(path.join(__dirname, 'public')))
-app.get('/', (req,res) =>{
-    res.render("index")
-})
+// app.get('/', (req,res) =>{
+//     res.render("index")
+// })
 
 
 const PORT = 4545
 app.use('/clucks', clucks)
+app.use('/', clucks)
 
 app.listen(PORT, ()=>{
 

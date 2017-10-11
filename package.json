@@ -8,7 +8,8 @@
     "debug": "nodemon --inspect=9229",
     "db:create": "createdb --echo cluckr",
     "db:drop": "dropdb --echo --if-exists cluckr",
-    "db:migrate": "node db/migration.js"
+    "db:migrate": "node db/migration.js",
+    "db:add_trends": "node db/create_table_trends.js"
   },
   "author": "Cam Scherman",
   "license": "MIT",
