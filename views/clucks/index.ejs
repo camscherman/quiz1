@@ -3,12 +3,10 @@
     <div class= "hidden col-lg-3">
         <div class= "card " id= "trending">
             <ul>
-                <li>A</li>
-                <li>B</li>
-                <li>C</li>
-                <li>D</li>
-                <li>E</li>
-                <li>F</li>
+                <% for(let trend of trends){%>
+                    <li><%= trend.trend_word %> : <%= trend.count %> </li>
+
+                <% } %>
             </ul>
 
         </div>

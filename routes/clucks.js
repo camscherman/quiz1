@@ -32,7 +32,11 @@ router.post('/new', upload.single('photo'), (req, res) => {
     else {        
          filename = ""
     }
-    helpers.trendCounter(content)
+    let add = helpers.trendCounter(content, kx)
+    console.log(content)
+    if(!!add){
+        add.then()
+    }
     kx.insert({username: username, content: content, image_path: `/uploads/${filename}` })
     .into('clucks')
     .then(()=>{

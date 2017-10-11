@@ -16,21 +16,24 @@ const helpers ={
             return `${r.getUTCFullYear()}`;
         }
     },
-    trendCounter: function(contents){
+    trendCounter: function(contents, database){
         let words = contents.split(" ")
         console.log(words)
         for(let word of words){
             console.log(word[0])
             if(word[0] === '#'){
-                let my_word = word.slice(1);
-                let {id, count} = kx.from('trends').where({trend_word: `${my_word}`}).then()
+                let my_word = word.slice(1).replace(",", "");
+                let id = ""
+                 database('trends').where('trend_word', `${my_word}`).then((trends) => id = trends.id)
+                console.log(`ID is ${id}`)
                 if(!!id){
                     new_count = count+1
-                    kx('trends').where({'id': id}).update({ count: new_count}).then(()=> next())
-                    
+                    console.log("Added word!")
+                    database('trends').where({'id': id}).update({ count: new_count}).then()
                 }
                 else{
-                    kx.insert({trend_word: my_word, count: 1}).then(()=> next())
+                    console.log("added another word")
+                    database('trends').insert({trend_word: my_word, count: 1}).then()
                 }
             }
         }
